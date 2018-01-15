@@ -1,0 +1,5 @@
+rootProject.name = 'tc-project'
+include 'core'
+include 'backend'
+include 'frontend'
+
