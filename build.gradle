@@ -1,4 +1,4 @@
-group 'com.epam.qa'
+group 'com.epam.com.epam.qa'
 version '0.0.1'
 
 task wrapper(type: Wrapper) {

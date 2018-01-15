@@ -1,4 +1,4 @@
-group 'com.epam.qa'
+group 'com.epam.com.epam.qa'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
