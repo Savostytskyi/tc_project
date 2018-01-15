@@ -1,3 +1,7 @@
+tasks.withType(Test).all { testTask ->
+    testTask.include {'**/BackendTestRunner.*'}
+}
+
 dependencies {
     compile project(':core')
     compile group: 'com.epam.jdi', name: 'jdi-http', version: '1.1.1'

@@ -14,6 +14,14 @@ subprojects {
         maven { url "http://dl.bintray.com/epam/reportportal" }
     }
 
+    tasks.withType(Test).all { testTask ->
+        testTask.useTestNG()
+        testTask.systemProperties System.properties
+        testTask.systemProperties['file.encoding'] = 'UTF-8'
+        testTask.testLogging.showStandardStreams = true
+        testTask.outputs.upToDateWhen { false }
+    }
+
     dependencies {
         testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
         compile group: 'org.projectlombok', name: 'lombok-maven', version: '1.16.18.1'

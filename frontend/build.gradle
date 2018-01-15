@@ -1,3 +1,7 @@
+tasks.withType(Test).all { testTask ->
+    testTask.include {'**/FrontendTestRunner.*'}
+}
+
 dependencies {
     compile project(':core')
     compile group: 'com.codeborne', name: 'selenide', version: '4.10'
