@@ -18,7 +18,7 @@ public class NavigationMenuDefinitionSteps implements En {
             AmazonWebSite.homePage.getHeader().goToGiftCardPage());
 
         Then("Gift Cards page opened", () ->
-            AmazonWebSite.giftCardPage.getGiftCardPageTitle().shouldBe(Condition.text("Gift Cards")));
+            AmazonWebSite.giftCardPage.getGiftCardPageTitle().shouldBe(Condition.visible));
 
     }
 }
