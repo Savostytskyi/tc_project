@@ -1,3 +1,7 @@
+ext {
+    selenideVersion = '4.9'
+}
+
 tasks.withType(Test).all { testTask ->
     testTask.include {'**/FrontendTestRunner.*'}
 }
@@ -6,8 +10,22 @@ task smokeTest(type: Test) {
     systemProperty "cucumber.options", "--tags @smokeTest"
 }
 
+task runFeature(type: Test) {
+    FileTree featuresTree = fileTree(dir: 'src/test/resources')
+    String featureName = System.getProperty('feature') + '.feature'
+    featuresTree.include '**/' + featureName
+    doFirst {
+        if (featuresTree.files.size() != 0) {
+            File feature = featuresTree.files[0]
+            systemProperty "cucumber.options", feature.getPath()
+        } else {
+            throw new InvalidUserDataException("Can not find feature with name: " + featureName)
+        }
+    }
+}
+
 dependencies {
     compile project(':core')
-    compile group: 'com.codeborne', name: 'selenide', version: '4.10'
+    compile "com.codeborne:selenide:${selenideVersion}"
 }
 

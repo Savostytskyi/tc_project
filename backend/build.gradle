@@ -1,3 +1,8 @@
+ext {
+    restAssuredVersion = '3.0.0'
+    jdiHttpVersion = '1.1.0'
+}
+
 tasks.withType(Test).all { testTask ->
     testTask.include {'**/BackendTestRunner.*'}
 }
@@ -6,9 +11,23 @@ task smokeTest(type: Test) {
     systemProperty "cucumber.options", "--tags @smokeTest"
 }
 
+task runFeature(type: Test) {
+    FileTree featuresTree = fileTree(dir: 'src/test/resources')
+    String featureName = System.getProperty('feature') + '.feature'
+    featuresTree.include '**/' + featureName
+    doFirst {
+        if (featuresTree.files.size() != 0) {
+            File feature = featuresTree.files[0]
+            systemProperty "cucumber.options", feature.getPath()
+        } else {
+            throw new InvalidUserDataException("Can not find feature with name: " + featureName)
+        }
+    }
+}
+
 dependencies {
     compile project(':core')
-    compile group: 'com.epam.jdi', name: 'jdi-http', version: '1.1.1'
+    compile "com.epam.jdi:jdi-http:${jdiHttpVersion}"
 }
 
 

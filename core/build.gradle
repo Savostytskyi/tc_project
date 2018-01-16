@@ -1,3 +1,15 @@
-dependencies {
+ext {
+    gsonVersion = '2.8.1'
+    qatoolsPropertiesVersion = '1.4'
+    sql2oVersion = '1.5.4'
+    jacksonDatabindVarsion = '2.9.3'
+    jdbcVersion = '5.1.6'
+}
 
+dependencies {
+    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVarsion}"
+    compile "ru.yandex.qatools.properties:properties-loader:${qatoolsPropertiesVersion}"
+    compile "org.sql2o:sql2o:${sql2oVersion}"
+    compile "mysql:mysql-connector-java:${jdbcVersion}"
 }

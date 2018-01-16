@@ -1,0 +1,15 @@
+package com.epam.qa.annotations;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.FIELD})
+@Retention(value= RetentionPolicy.RUNTIME)
+public @interface WebPage {
+
+    String uri() default "";
+
+    String pageName() default "undefined";
+}

@@ -6,7 +6,7 @@ import com.epam.qa.services.UserPostsService;
 import cucumber.api.DataTable;
 import cucumber.api.java8.En;
 
-import static com.epam.http.requests.ServiceInit.init;
+import static com.epam.qa.setup.RestServiceInit.init;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class UserPostsDefinitionSteps implements En {

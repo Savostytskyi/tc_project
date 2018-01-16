@@ -5,6 +5,18 @@ task wrapper(type: Wrapper) {
     gradleVersion = '4.4.1'
 }
 
+ext {
+    testngVersion = '6.11'
+    lombokVersion = '1.16.18'
+    log4jVersion = '1.2.17'
+    slf4jVersion = '1.7.25'
+    assertJVersion = '3.8.0'
+    cucumberVersion = '1.2.5'
+    rpAgentVersion = '3.0.1'
+    rpLoggerVersion = '3.0.1'
+    apacheCommonVersion = '3.5'
+}
+
 subprojects {
     apply plugin: 'java'
 
@@ -12,28 +24,29 @@ subprojects {
         mavenCentral()
         mavenLocal()
         maven { url "http://dl.bintray.com/epam/reportportal" }
+        maven { url "http://labs.consol.de/maven/repository/" }
     }
 
     tasks.withType(Test).all { testTask ->
         testTask.useTestNG()
         testTask.systemProperties System.properties
         testTask.systemProperties['file.encoding'] = 'UTF-8'
+        testTask.ignoreFailures = true
         testTask.testLogging.showStandardStreams = true
         testTask.outputs.upToDateWhen { false }
     }
 
     dependencies {
-        testCompile group: 'org.testng', name: 'testng', version: '6.10'
-        compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
-        compile group: 'org.assertj', name: 'assertj-core', version: '3.9.0'
-
-        compile group: 'log4j', name: 'log4j', version: '1.2.17'
-
-        compile group: 'info.cukes', name: 'cucumber-java8', version: '1.2.5'
-        compile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
-
-        compile 'com.epam.reportportal:agent-java-cucumber:3.0.1'
-        compile 'com.epam.reportportal:logger-java-log4j:3.0.1'
+        testCompile "org.testng:testng:${testngVersion}"
+        compile "org.projectlombok:lombok:${lombokVersion}"
+        compile "log4j:log4j:${log4jVersion}"
+        compile "org.slf4j:slf4j-log4j12:${slf4jVersion}"
+        compile "org.assertj:assertj-core:${assertJVersion}"
+        compile "info.cukes:cucumber-java8:${cucumberVersion}"
+        compile "info.cukes:cucumber-testng:${cucumberVersion}"
+        compile "com.epam.reportportal:agent-java-cucumber:${rpAgentVersion}"
+        compile "com.epam.reportportal:logger-java-log4j:${rpLoggerVersion}"
+        compile "org.apache.commons:commons-lang3:${apacheCommonVersion}"
     }
 }
 
