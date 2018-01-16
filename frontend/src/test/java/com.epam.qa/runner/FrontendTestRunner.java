@@ -6,7 +6,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.BeforeSuite;
 
 @CucumberOptions(features = "classpath:features",
-        glue = {"com.epam.qa.stepdefs"})
+        glue = {"com.epam.qa.stepdefs"},
+    plugin = {"pretty", "com.epam.reportportal.cucumber.ScenarioReporter"})
 public class FrontendTestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeSuite

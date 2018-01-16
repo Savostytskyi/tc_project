@@ -33,7 +33,7 @@ subprojects {
         compile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
 
         compile 'com.epam.reportportal:agent-java-cucumber:3.0.1'
-        compile 'com.epam.reportportal:logger-java-log4j:4.0.0-BETA-1'
+        compile 'com.epam.reportportal:logger-java-log4j:3.0.1'
     }
 }
 
