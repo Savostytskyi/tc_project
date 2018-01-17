@@ -14,5 +14,6 @@ public class GiftCardPage {
     private Header header;
 
     private SelenideElement giftCardPageTitle = $("img[alt='Gift Cards']");
+    private SelenideElement sectionTitleTitle = $("img[alt='Shop by Occasion']");
 
 }

@@ -18,6 +18,7 @@ public class FrontendTestRunner extends AbstractTestNGCucumberTests {
     @BeforeSuite
     public void setUp() {
         WebSetup.init(AmazonWebSite.class);
+        Configuration.browserSize = "1680x1050";
         Configuration.baseUrl = EnvConfig.get().getWebDomain();
     }
 
