@@ -27,11 +27,15 @@ subprojects {
         maven { url "http://labs.consol.de/maven/repository/" }
     }
 
+
+    tasks.withType(Test) {
+        systemProperties System.properties
+    }
+
     tasks.withType(Test).all { testTask ->
         testTask.useTestNG()
-        testTask.systemProperties System.properties
         testTask.systemProperties['file.encoding'] = 'UTF-8'
-        testTask.ignoreFailures = true
+        testTask.ignoreFailures = false
         testTask.testLogging.showStandardStreams = true
         testTask.outputs.upToDateWhen { false }
     }
