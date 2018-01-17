@@ -23,7 +23,7 @@ public class CucumberReporter extends AbstractReporter {
 
     protected Supplier<Maybe<String>> rootSuiteId = Suppliers.memoize(() -> {
         StartTestItemRQ rq = new StartTestItemRQ();
-        rq.setName("JAP features");
+        rq.setName("Features");
         rq.setStartTime(Calendar.getInstance().getTime());
         rq.setType("STORY");
         return RP.get().startTestItem(rq);
