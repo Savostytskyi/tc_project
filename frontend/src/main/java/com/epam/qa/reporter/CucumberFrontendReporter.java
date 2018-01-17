@@ -16,7 +16,7 @@ public class CucumberFrontendReporter extends CucumberReporter {
         reportResult(result, decorateMessage("STEP " + result.getStatus().toUpperCase()));
         if (result.getStatus().toUpperCase().equals("FAILED")) {
             try {
-                ReportPortalMessage message = new ReportPortalMessage(getLastScreenshot().getAbsoluteFile(), "Screenshot:");
+                ReportPortalMessage message = new ReportPortalMessage(getLastScreenshot(), "Screenshot:");
                 log.info(message);
             } catch (IOException e) {
                 log.warn("Can't find screenshot file...");

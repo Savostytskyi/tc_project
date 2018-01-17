@@ -22,7 +22,6 @@ public class FrontendTestRunner extends AbstractTestNGCucumberTests {
         Configuration.baseUrl = EnvConfig.get().getWebDomain();
     }
 
-
     @AfterSuite
     public void tearDown() {
         Selenide.clearBrowserCookies();
