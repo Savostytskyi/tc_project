@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import static org.testng.util.Strings.isNullOrEmpty;
-
 @Slf4j
 class PropertiesLoader {
 
@@ -38,11 +36,7 @@ class PropertiesLoader {
     }
 
     private static String getEnvironmentResourceName() {
-        String env = System.getProperty(ENV);
-        if (isNullOrEmpty(env)) {
-            throw new TestConfigurationException(
-                "Property env should be specified via VM options / program arguments");
-        }
+        String env = System.getProperty(ENV, "QA");
         env = env.toUpperCase();
         if (!validEnvNames.contains(env)) {
             throw new TestConfigurationException(
