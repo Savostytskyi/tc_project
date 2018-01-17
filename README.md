@@ -15,3 +15,9 @@ or<br>
 or<br>
 
 <code>gradle backend:runFeature -Denv=QA -Dfeature=user_posts</code> - run single feature 'user_posts.feature'
+
+Intelij IDEA required plugins:
+Cucumber for Java - https://plugins.jetbrains.com/plugin/7212-cucumber-for-java <br>
+Lombok Plugin - https://plugins.jetbrains.com/plugin/6317-lombok-plugin <br>
+
+To make lombok works properly you have to enable annotation processing in your IDE
