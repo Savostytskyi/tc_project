@@ -1,5 +1,5 @@
 ext {
-    selenideVersion = '4.9'
+    selenideVersion = '4.10'
 }
 
 tasks.withType(Test).all { testTask ->
