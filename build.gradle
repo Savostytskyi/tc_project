@@ -18,7 +18,6 @@ subprojects {
         testTask.useTestNG()
         testTask.systemProperties System.properties
         testTask.systemProperties['file.encoding'] = 'UTF-8'
-        testTask.testLogging.showStandardStreams = true
         testTask.outputs.upToDateWhen { false }
     }
 
